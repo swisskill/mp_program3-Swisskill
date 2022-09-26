@@ -17,7 +17,6 @@ public class calc extends Fragment {
     String pri = "";
     String sec = "";
     boolean hasOp = false;
-    boolean fdec = false; //logic is almost there but may need to rework it in total. you can get double..
     boolean fadd = false;
     boolean fsub = false;
     boolean fmul = false;
@@ -53,7 +52,6 @@ public class calc extends Fragment {
 
     public void allFalse(){
         hasOp = false;
-        fdec = false;
         fadd = false;
         fsub = false;
         fmul = false;
@@ -94,7 +92,6 @@ public class calc extends Fragment {
                 pri = Double.toString(fdis);
                 sec = "";
                 allFalse();
-                fdec = true;
             }
         });
         clrO.setOnClickListener(new View.OnClickListener() {
@@ -123,15 +120,16 @@ public class calc extends Fragment {
         decO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!fdec){
-                    if(sec.isEmpty()){
+                if(sec.isEmpty()){
+                    if(!pri.contains(".")){
                         pri = pri+".";
                         cal.setText(pri);
-                    }else{
-                        sec=sec+".";
+                    }
+                }else{
+                    if(!sec.contains(".")){
+                        sec = sec+".";
                         cal.setText(sec);
                     }
-                    fdec = true;
                 }
             }
         });
