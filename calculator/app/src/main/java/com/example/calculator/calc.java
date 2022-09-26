@@ -82,6 +82,7 @@ public class calc extends Fragment {
         Button powO = myView.findViewById(R.id.button19);
         Button decO = myView.findViewById(R.id.button22);
         Button eqlO = myView.findViewById(R.id.button23);
+        Button face = myView.findViewById(R.id.button24);
         TextView cal = myView.findViewById(R.id.textView);
         //---------------------------------------------------------------
 
@@ -89,6 +90,7 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(!numEx) {return;}
+                if(tmpOp){return;}
                 double fdis = doOp();
                 cal.setText(Double.toString(fdis));
                 pri = Double.toString(fdis);
@@ -316,7 +318,12 @@ public class calc extends Fragment {
                 //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
             }
         });
-
+        face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cal.setText("Hello");
+            }
+        });
 
 
         return myView;
