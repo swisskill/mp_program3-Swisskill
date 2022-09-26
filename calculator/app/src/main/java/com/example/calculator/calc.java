@@ -30,6 +30,7 @@ public class calc extends Fragment {
     }
     public String priOr(int buttonNum){
         String butStr = Integer.toString(buttonNum);
+        tmpOp = false;
         if (!hasOp){
             pri = pri + butStr;
             return pri;
@@ -111,10 +112,10 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(sec.isEmpty()){
-                    pri = "-"+pri;
+                    pri = Double.toString(-1*(Double.parseDouble(pri)));
                     cal.setText(pri);
                 }else{
-                    sec="-"+sec;
+                    sec = Double.toString(-1*(Double.parseDouble(sec)));
                     cal.setText(sec);
                 }
             }
@@ -153,6 +154,7 @@ public class calc extends Fragment {
                 allFalse();
                 hasOp = true;
                 fadd = true;
+                tmpOp = true;
             }
         });
         subO.setOnClickListener(new View.OnClickListener() {
@@ -168,6 +170,7 @@ public class calc extends Fragment {
                 allFalse();
                 hasOp = true;
                 fsub = true;
+                tmpOp = true;
             }
         });
         mulO.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +185,7 @@ public class calc extends Fragment {
                 allFalse();
                 hasOp = true;
                 fmul = true;
+                tmpOp = true;
             }
         });
         divO.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +200,7 @@ public class calc extends Fragment {
                 allFalse();
                 hasOp = true;
                 fdiv = true;
+                tmpOp = true;
             }
         });
         powO.setOnClickListener(new View.OnClickListener() {
@@ -210,6 +215,7 @@ public class calc extends Fragment {
                 allFalse();
                 hasOp = true;
                 fpow = true;
+                tmpOp = true;
             }
         });
 
