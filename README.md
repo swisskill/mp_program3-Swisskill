@@ -13,5 +13,6 @@ Will Brant
 - Android version 11
 ## Anything that doesn't work:
 - You can't switch to landscape mode. I made it that way on purpose
+- The font size might not let everything be displayed. I switched it from 60 to 40, but I made that change over the desktop so hopefully I didn't introduce some error. If there is a problem, the previous commit works. Although, I'm only worried cause I have needless anxiety, not based in realism.
 
 
