@@ -23,12 +23,13 @@ public class calc extends Fragment {
     boolean fdiv = false;
     boolean fpow = false;
     boolean tmpOp = true;
-
+    boolean numEx = false;
     public static calc newInstance(){
         return new calc();
     }
     public String priOr(int buttonNum){
         String butStr = Integer.toString(buttonNum);
+        numEx  = true;
         tmpOp = false;
         if (!hasOp){
             pri = pri + butStr;
@@ -87,6 +88,7 @@ public class calc extends Fragment {
         eqlO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 double fdis = doOp();
                 cal.setText(Double.toString(fdis));
                 pri = Double.toString(fdis);
@@ -102,12 +104,17 @@ public class calc extends Fragment {
                 sec = "";
                 allFalse();
                 cal.setText("");
+                numEx = false;
             }
         });
         negO.setOnClickListener(new View.OnClickListener() {
             //need to figure out how to un-negate
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
+                if(pri.isEmpty()){
+
+                }
                 if(sec.isEmpty()){
                     pri = Double.toString(-1*(Double.parseDouble(pri)));
                     cal.setText(pri);
@@ -121,13 +128,11 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(sec.isEmpty()&&tmpOp == false){
-                    Toast.makeText(requireContext(),"123", Toast.LENGTH_SHORT).show();
                     if(!pri.contains(".")){
                         pri = pri+".";
                         cal.setText(pri);
                     }
                 }else{
-                    Toast.makeText(requireContext(),"130", Toast.LENGTH_SHORT).show();
 
                     if(!sec.contains(".")){
                         sec = sec+".";
@@ -145,6 +150,7 @@ public class calc extends Fragment {
         addO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 if(hasOp){
                     if(!tmpOp){
                     double dis = doOp();
@@ -161,6 +167,7 @@ public class calc extends Fragment {
         subO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 if(hasOp){
                     if(!tmpOp){
                     double dis = doOp();
@@ -177,6 +184,7 @@ public class calc extends Fragment {
         mulO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 if(hasOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
@@ -192,6 +200,7 @@ public class calc extends Fragment {
         divO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 if(hasOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
@@ -207,6 +216,7 @@ public class calc extends Fragment {
         powO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numEx) {return;}
                 if(hasOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
