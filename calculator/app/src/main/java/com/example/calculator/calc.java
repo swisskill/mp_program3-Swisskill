@@ -14,11 +14,40 @@ import android.widget.Toast;
 
 public class calc extends Fragment {
 
+    String pri = "";
+    String sec = "";
+    boolean hasOp = false;
+    boolean fdec = false;
+    boolean fadd = false;
+    boolean fsub = false;
+    boolean fmul = false;
+    boolean fdiv = false;
+    boolean fpow = false;
+
     public static calc newInstance(){
         return new calc();
     }
-
-
+    public String priOr(int buttonNum){
+        String butStr = Integer.toString(buttonNum);
+        if (!hasOp){
+            if(pri.compareTo("") == 0){
+                pri = butStr;
+            }
+            else {
+                pri = pri + butStr;
+            }
+            return pri;
+        }
+        else{
+            if(sec.compareTo("") == 0){
+                sec = butStr;
+            }
+            else{
+                sec = sec + butStr;
+            }
+            return sec;
+        }
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -42,16 +71,36 @@ public class calc extends Fragment {
         Button powO = myView.findViewById(R.id.button19);
         Button decO = myView.findViewById(R.id.button22);
         Button eqlO = myView.findViewById(R.id.button23);
+        TextView cal = myView.findViewById(R.id.textView);
+        //---------------------------------------------------------------
 
+        //-----------------------------------------------------------------
         num1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String display = priOr(1);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
             }
         });
 
-        
 
+        clrO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ATTN: reset all values to original
+                pri = "";
+                sec = "";
+                hasOp = false;
+                fdec = false;
+                fadd = false;
+                fsub = false;
+                fmul = false;
+                fdiv = false;
+                fpow = false;
+                cal.setText("");
+            }
+        });
 
 
 
