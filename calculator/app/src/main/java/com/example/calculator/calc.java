@@ -63,19 +63,15 @@ public class calc extends Fragment {
         Button eqlO = myView.findViewById(R.id.button23);
         TextView cal = myView.findViewById(R.id.textView);
         //---------------------------------------------------------------
-
-        //-----------------------------------------------------------------
-        num1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String display = priOr(1);
-                cal.setText(display);
-                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
-            }
-        });
         addO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(hasOp){
+                    double dis = Double.parseDouble(pri) + Double.parseDouble(sec);
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
                 hasOp = true;
                 fadd = true;
             }
@@ -84,10 +80,13 @@ public class calc extends Fragment {
         eqlO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                double fdis = 0;
                 if(fadd){
-                    double fdis = Double.parseDouble(pri) + Double.parseDouble(sec);
-                    cal.setText(Double.toString(fdis));
+                    fdis = Double.parseDouble(pri) + Double.parseDouble(sec);
                 }
+                cal.setText(Double.toString(fdis));
+                pri = Double.toString(fdis);
+                sec = "";
             }
         });
         clrO.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +103,89 @@ public class calc extends Fragment {
                 fdiv = false;
                 fpow = false;
                 cal.setText("");
+            }
+        });
+        //-------------------------------------------------------------------
+        //----------------------NUMBERS--------------------------------------
+
+        num1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(1);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(2);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(3);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(4);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(5);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(6);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(7);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(8);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(9);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
+            }
+        });
+        num0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String display = priOr(0);
+                cal.setText(display);
+                //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
             }
         });
 
