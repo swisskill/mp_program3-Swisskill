@@ -23,6 +23,7 @@ public class calc extends Fragment {
     boolean fmul = false;
     boolean fdiv = false;
     boolean fpow = false;
+    boolean tmpOp = true;
 
     public static calc newInstance(){
         return new calc();
@@ -104,6 +105,35 @@ public class calc extends Fragment {
                 cal.setText("");
             }
         });
+        negO.setOnClickListener(new View.OnClickListener() {
+            //need to figure out how to un-negate
+            @Override
+            public void onClick(View view) {
+                if(sec.isEmpty()){
+                    pri = "-"+pri;
+                    cal.setText(pri);
+                }else{
+                    sec="-"+sec;
+                    cal.setText(sec);
+                }
+            }
+        });
+        decO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!fdec){
+                    if(sec.isEmpty()){
+                        pri = pri+".";
+                        cal.setText(pri);
+                    }else{
+                        sec=sec+".";
+                        cal.setText(sec);
+                    }
+                    fdec = true;
+                }
+            }
+        });
+
         //-------------------------------------------------------------------
         //----------------------OPERATORS------------------------------------
         //need tempOp flag to make sure they can't do ++
@@ -113,11 +143,12 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(hasOp){
+                    if(!tmpOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
-                }
+                }}
                 allFalse();
                 hasOp = true;
                 fadd = true;
@@ -127,11 +158,12 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(hasOp){
+                    if(!tmpOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
-                }
+                }}
                 allFalse();
                 hasOp = true;
                 fsub = true;
