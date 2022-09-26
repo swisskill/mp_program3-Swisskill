@@ -186,11 +186,12 @@ public class calc extends Fragment {
             public void onClick(View view) {
                 if(!numEx) {return;}
                 if(hasOp){
+                    if(!tmpOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
-                }
+                }}
                 allFalse();
                 hasOp = true;
                 fmul = true;
@@ -202,11 +203,12 @@ public class calc extends Fragment {
             public void onClick(View view) {
                 if(!numEx) {return;}
                 if(hasOp){
+                    if(!tmpOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
-                }
+                }}
                 allFalse();
                 hasOp = true;
                 fdiv = true;
@@ -218,11 +220,12 @@ public class calc extends Fragment {
             public void onClick(View view) {
                 if(!numEx) {return;}
                 if(hasOp){
+                    if(!tmpOp){
                     double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
-                }
+                }}
                 allFalse();
                 hasOp = true;
                 fpow = true;
