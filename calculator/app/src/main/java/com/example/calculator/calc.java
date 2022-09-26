@@ -63,30 +63,27 @@ public class calc extends Fragment {
         Button eqlO = myView.findViewById(R.id.button23);
         TextView cal = myView.findViewById(R.id.textView);
         //---------------------------------------------------------------
-        addO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(hasOp){
-                    double dis = Double.parseDouble(pri) + Double.parseDouble(sec);
-                    cal.setText(Double.toString(dis));
-                    pri = Double.toString(dis);
-                    sec = "";
-                }
-                hasOp = true;
-                fadd = true;
-            }
-        });
 
         eqlO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 double fdis = 0;
-                if(fadd){
+                if(fadd) {
                     fdis = Double.parseDouble(pri) + Double.parseDouble(sec);
-                }
+                }else if(fsub){fdis = Double.parseDouble(pri) - Double.parseDouble(sec);}
+                else if(fmul){fdis = Double.parseDouble(pri) * Double.parseDouble(sec);}
+                else if(fdiv){fdis = Double.parseDouble(pri) / Double.parseDouble(sec);}
+                else if(fpow){fdis = Math.pow(Double.parseDouble(pri),Double.parseDouble(sec));}
                 cal.setText(Double.toString(fdis));
                 pri = Double.toString(fdis);
                 sec = "";
+                hasOp = true;
+                fdec = false;
+                fadd = false;
+                fsub = false;
+                fmul = false;
+                fdiv = false;
+                fpow = false;
             }
         });
         clrO.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +102,99 @@ public class calc extends Fragment {
                 cal.setText("");
             }
         });
+        //-------------------------------------------------------------------
+        //----------------------OPERATORS------------------------------------
+        addO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hasOp){
+                    double dis = Double.parseDouble(pri) + Double.parseDouble(sec);
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
+                hasOp = true;
+                fadd = true;
+                fdec = false;
+                fsub = false;
+                fmul = false;
+                fdiv = false;
+                fpow = false;
+            }
+        });
+        subO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hasOp){
+                    double dis = Double.parseDouble(pri) - Double.parseDouble(sec);
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
+                hasOp = true;
+                fsub = true;
+                fdec = false;
+                fadd = false;
+                fmul = false;
+                fdiv = false;
+                fpow = false;
+            }
+        });
+        mulO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hasOp){
+                    double dis = Double.parseDouble(pri) * Double.parseDouble(sec);
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
+                hasOp = true;
+                fmul = true;
+                fdec = false;
+                fadd = false;
+                fsub = false;
+                fdiv = false;
+                fpow = false;
+            }
+        });
+        divO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hasOp){
+                    double dis = Double.parseDouble(pri) / Double.parseDouble(sec);
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
+                hasOp = true;
+                fdiv = true;
+                fdec = false;
+                fadd = false;
+                fsub = false;
+                fmul = false;
+                fpow = false;
+            }
+        });
+        powO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hasOp){
+                    double dis = Math.pow(Double.parseDouble(pri),Double.parseDouble(sec));
+                    cal.setText(Double.toString(dis));
+                    pri = Double.toString(dis);
+                    sec = "";
+                }
+                hasOp = true;
+                fpow = true;
+                fdec = false;
+                fadd = false;
+                fsub = false;
+                fmul = false;
+                fdiv = false;
+            }
+        });
+
         //-------------------------------------------------------------------
         //----------------------NUMBERS--------------------------------------
 
