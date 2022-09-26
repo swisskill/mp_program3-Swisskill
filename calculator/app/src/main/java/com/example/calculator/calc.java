@@ -30,21 +30,11 @@ public class calc extends Fragment {
     public String priOr(int buttonNum){
         String butStr = Integer.toString(buttonNum);
         if (!hasOp){
-            if(pri.compareTo("") == 0){
-                pri = butStr;
-            }
-            else {
-                pri = pri + butStr;
-            }
+            pri = pri + butStr;
             return pri;
         }
         else{
-            if(sec.compareTo("") == 0){
-                sec = butStr;
-            }
-            else{
-                sec = sec + butStr;
-            }
+            sec = sec + butStr;
             return sec;
         }
     }
@@ -83,8 +73,23 @@ public class calc extends Fragment {
                 //Toast.makeText(requireContext(),pri, Toast.LENGTH_SHORT).show();
             }
         });
+        addO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hasOp = true;
+                fadd = true;
+            }
+        });
 
-
+        eqlO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(fadd){
+                    double fdis = Double.parseDouble(pri) + Double.parseDouble(sec);
+                    cal.setText(Double.toString(fdis));
+                }
+            }
+        });
         clrO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
