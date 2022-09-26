@@ -38,6 +38,26 @@ public class calc extends Fragment {
             return sec;
         }
     }
+
+    public double doOp(){
+        double fdis = 0;
+        if(fadd) {fdis = Double.parseDouble(pri) + Double.parseDouble(sec);}
+        else if(fsub){fdis = Double.parseDouble(pri) - Double.parseDouble(sec);}
+        else if(fmul){fdis = Double.parseDouble(pri) * Double.parseDouble(sec);}
+        else if(fdiv){fdis = Double.parseDouble(pri) / Double.parseDouble(sec);}
+        else if(fpow){fdis = Math.pow(Double.parseDouble(pri),Double.parseDouble(sec));}
+        return fdis;
+    }
+
+    public void allFalse(){
+        hasOp = false;
+        fdec = false;
+        fadd = false;
+        fsub = false;
+        fmul = false;
+        fdiv = false;
+        fpow = false;
+    }
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -67,23 +87,11 @@ public class calc extends Fragment {
         eqlO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                double fdis = 0;
-                if(fadd) {
-                    fdis = Double.parseDouble(pri) + Double.parseDouble(sec);
-                }else if(fsub){fdis = Double.parseDouble(pri) - Double.parseDouble(sec);}
-                else if(fmul){fdis = Double.parseDouble(pri) * Double.parseDouble(sec);}
-                else if(fdiv){fdis = Double.parseDouble(pri) / Double.parseDouble(sec);}
-                else if(fpow){fdis = Math.pow(Double.parseDouble(pri),Double.parseDouble(sec));}
+                double fdis = doOp();
                 cal.setText(Double.toString(fdis));
                 pri = Double.toString(fdis);
                 sec = "";
-                hasOp = false;
-                fdec = false;
-                fadd = false;
-                fsub = false;
-                fmul = false;
-                fdiv = false;
-                fpow = false;
+                allFalse();
             }
         });
         clrO.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +100,7 @@ public class calc extends Fragment {
                 //ATTN: reset all values to original
                 pri = "";
                 sec = "";
-                hasOp = false;
-                fdec = false;
-                fadd = false;
-                fsub = false;
-                fmul = false;
-                fdiv = false;
-                fpow = false;
+                allFalse();
                 cal.setText("");
             }
         });
@@ -111,90 +113,70 @@ public class calc extends Fragment {
             @Override
             public void onClick(View view) {
                 if(hasOp){
-                    double dis = Double.parseDouble(pri) + Double.parseDouble(sec);
+                    double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
                 }
+                allFalse();
                 hasOp = true;
                 fadd = true;
-                fdec = false;
-                fsub = false;
-                fmul = false;
-                fdiv = false;
-                fpow = false;
             }
         });
         subO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(hasOp){
-                    double dis = Double.parseDouble(pri) - Double.parseDouble(sec);
+                    double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
                 }
+                allFalse();
                 hasOp = true;
                 fsub = true;
-                fdec = false;
-                fadd = false;
-                fmul = false;
-                fdiv = false;
-                fpow = false;
             }
         });
         mulO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(hasOp){
-                    double dis = Double.parseDouble(pri) * Double.parseDouble(sec);
+                    double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
                 }
+                allFalse();
                 hasOp = true;
                 fmul = true;
-                fdec = false;
-                fadd = false;
-                fsub = false;
-                fdiv = false;
-                fpow = false;
             }
         });
         divO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(hasOp){
-                    double dis = Double.parseDouble(pri) / Double.parseDouble(sec);
+                    double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
                 }
+                allFalse();
                 hasOp = true;
                 fdiv = true;
-                fdec = false;
-                fadd = false;
-                fsub = false;
-                fmul = false;
-                fpow = false;
             }
         });
         powO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(hasOp){
-                    double dis = Math.pow(Double.parseDouble(pri),Double.parseDouble(sec));
+                    double dis = doOp();
                     cal.setText(Double.toString(dis));
                     pri = Double.toString(dis);
                     sec = "";
                 }
+                allFalse();
                 hasOp = true;
                 fpow = true;
-                fdec = false;
-                fadd = false;
-                fsub = false;
-                fmul = false;
-                fdiv = false;
             }
         });
 
