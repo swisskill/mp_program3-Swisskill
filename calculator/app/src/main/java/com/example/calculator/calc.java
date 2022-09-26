@@ -120,12 +120,15 @@ public class calc extends Fragment {
         decO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(sec.isEmpty()){
+                if(sec.isEmpty()&&tmpOp == false){
+                    Toast.makeText(requireContext(),"123", Toast.LENGTH_SHORT).show();
                     if(!pri.contains(".")){
                         pri = pri+".";
                         cal.setText(pri);
                     }
                 }else{
+                    Toast.makeText(requireContext(),"130", Toast.LENGTH_SHORT).show();
+
                     if(!sec.contains(".")){
                         sec = sec+".";
                         cal.setText(sec);
