@@ -77,7 +77,7 @@ public class calc extends Fragment {
                 cal.setText(Double.toString(fdis));
                 pri = Double.toString(fdis);
                 sec = "";
-                hasOp = true;
+                hasOp = false;
                 fdec = false;
                 fadd = false;
                 fsub = false;
@@ -104,6 +104,9 @@ public class calc extends Fragment {
         });
         //-------------------------------------------------------------------
         //----------------------OPERATORS------------------------------------
+        //need tempOp flag to make sure they can't do ++
+        //init set to true, hitting numbers sets to false. equals sets to false too
+        //make sure that the op is the previous not the next
         addO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
