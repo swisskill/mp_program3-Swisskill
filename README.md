@@ -1,5 +1,5 @@
   GNU nano 6.2                                                                      README.md                                                                                
-# Program # 3
+# Program # 3 Points: 50/50
 
 ## Course: 
 Cosc 4730
